@@ -1,0 +1,135 @@
+create table employee2
+(
+id number(10) primary key,
+name varchar2(30) not null,
+salary number(10)
+);
+
+insert into employee2 values(1,'rohit',42000);
+insert into employee2 values(2,'ujjawal',87000);
+
+insert into employee2 values(1,'saurabh',35000);
+desc employee2;
+
+create table employee3
+(
+id number(10) primary key,
+name varchar2(40) not null,
+salary number(10) check(salary>0),
+age number(10) check (age>22),
+dept varchar2(20) default 'trainee'
+);
+desc employee3;
+
+insert into employee3 values(1,'manish',64000,25,'HR');
+insert into employee3 (id,name,salary,age)values(2,'karan',46000,26);
+insert into employee3 (id,name,salary,age)values(3,'utkarsh',79000,23);
+
+insert into employee3 values(4,'mohit',41000,29,'Tester');
+select * from employee3;
+
+create table employee4
+(
+id number(10) primary key,
+name varchar2(40) not null,
+mobileno varchar2(40) unique,
+email varchar(30) unique,
+salary number(30)check (salary>0)
+);
+
+desc employee4;
+
+insert into  employee4 values(1,'yash',8789323567,'yashkumar@gmail.com',81000);
+insert into  employee4 values(2,'vaibhav',6730755395,'vaibhavk@gmail.com',41000);
+
+insert into employee4(id,name)values(3,'dev');
+insert into employee4(id,name)values(4,'rishabh');
+select * from  employee4;
+
+create table emp5
+(
+id  number(10),
+name varchar2(30),
+salary number(10),
+constraint pk1 primary key(id)
+);
+desc emp5;
+
+insert into emp5 values(1,'sachin',56000);
+insert into emp5 values(2,'gaurav',29000);
+
+select * from emp5;
+
+
+
+create table dept
+(
+id number(10) primary key,
+name varchar2(30),
+manager varchar2(30)
+);
+insert into dept values(1,'HR','Yogesh');
+insert into dept values (2,'Developer','kumar');
+
+select * from dept;
+
+create table emp7
+(
+id number(10) primary key,
+name varchar2(30),
+age number(10),
+salary number(10),
+deptId number(10),
+constraint fk1 foreign key(deptId) references dept(id)
+);
+
+insert into emp7 values(100,'akash',25,35000,1);
+insert into emp7 values(101,'manish',27,73000,2);
+insert into emp7 values(102,'sarvesh',23,42000,2);
+insert into emp7 values(103,'sachin',22,62000,1);
+
+select * from emp7;
+
+delete from dept where id=2;
+
+drop table emp7;
+
+create table emp7
+(
+id number(10) primary key,
+name varchar2(30),
+age number(10),
+salary number(10),
+deptId number(10),
+constraint fk1 foreign key(deptId) references dept(id) on delete cascade
+);
+
+insert into emp7 values(100,'akash',25,35000,1);
+insert into emp7 values(101,'manish',27,73000,2);
+insert into emp7 values(102,'sarvesh',23,42000,2);
+insert into emp7 values(103,'sachin',22,62000,1);
+
+select * from emp7;
+
+drop table emp7;
+
+create table emp7
+(
+id number(10) primary key,
+name varchar2(30),
+age number(10),
+salary number(10),
+deptId number(10),
+constraint fk1 foreign key(deptId) references dept(id) on delete set null
+);
+
+insert into emp7 values(100,'akash',25,35000,1);
+insert into emp7 values(101,'manish',27,73000,2);
+insert into emp7 values(102,'sarvesh',23,42000,2);
+insert into emp7 values(103,'sachin',22,62000,1);
+
+select * from emp7;
+delete from dept where id=2;
+
+
+

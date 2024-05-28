@@ -1,0 +1,31 @@
+select * from employee;
+select * from employee where sal>60000;
+
+select sal from employee where name ='rohan'
+
+select * from employee 
+where sal>(select sal from employee where name ='rohan');
+
+select sal from employee where dept='HR';
+
+select * from employee;
+delete from employee where name='dev';
+
+select * from employee where id in (2,4,5,6);
+select * from employee where id > any(4,5,6);
+select * from employee where id > all(1,2,3);
+
+select * from employee
+where sal>all(select sal from employee where dept='developer')and dept!='developer';
+
+select * from employee 
+where sal=(select max(sal) from employee);
+
+select * from employee
+where age in ( select age from employee where dept='HR');
+
+select max(sal) from employee
+where sal<(select max(sal) from employee);
+
+
+

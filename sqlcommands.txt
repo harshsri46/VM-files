@@ -1,0 +1,147 @@
+create table employee
+(
+id number(10),
+name varchar2(30),
+salary number(10,2),
+age number(10)
+);
+
+desc employee,4700.2,27);
+insert into employee values(2,'sachin',78000,29);
+
+select * from employee;
+select id from employee;
+select id, age, name from employee;
+ 
+
+insert into employee(id,name)values (3,'ramesh');
+insert into employee(id,name)values(4,'rohan');
+select * from employee;
+
+insert into employee(id,name,salary)values(5,'manish',56000);
+select *from employee;
+
+update employee set salary=60000 where id=3;
+update employee set salary=30000 where id>3;
+select * from employee;
+
+delete from employee;
+delete from employee where id=1;
+
+rename employee to emp3;
+select * from emp3;
+desc emp3;
+
+rename emp3 to employee;
+select * from employee;
+
+
+alter table employee add(dept varchar(20));
+alter table employee drop column dept;
+alter table employee rename column salary to sal;
+
+alter table employee modify name varchar2(50);
+desc employee;
+
+update employee set age=28 where id=4;
+select id,name,sal,sal+1000 from employee;
+select * from employee;
+select id,name as empname,sal,sal+1000 as bonus,sal/30 as perdaysalary from employee;
+
+alter table employee add dept varchar2(40);
+update employee set dept='developer' where id=4;
+update employee set dept='developer' where id=3;
+select * from employee;
+update employee set dept='HR' where id=2;
+update employee set dept='HR' where id=5;
+
+update employee set age=30 where id=3;
+update employee set age=32 where id=5;
+
+insert into employee values(1,'rohit',65000,23,'HR');
+insert into employee values(6,'kamla',56000,28,'tester');
+
+select * from employee where dept='HR';
+select name from employee where dept='HR';
+
+select * from employee where dept <>'HR';
+
+select * from employee where dept='HR' and age>30;
+select * from employee where dept<>'HR' and age <30;
+
+select * from employee where dept='HR' or age >30;
+select * from employee;
+
+select * from employee order by age;
+
+select * from employee order by age asc;
+select * from employee order by age desc;
+
+select * from employee where dept='HR' order by age desc;
+select * from employee;
+
+select sum(sal) from employee;
+select min(sal) from employee;
+select max(sal) from employee;
+select avg(sal) from employee;
+select count(sal) from employee;
+
+select min(age) from employee;
+select max(age) from employee;
+
+select dept from employee group by dept;
+select dept ,count(id) from employee group by dept;
+select dept,count(sal) from employee group by dept;
+
+select dept,count(id),sum(sal),min(sal),max(sal)
+from employee 
+group by dept
+order by count(id);
+
+select dept,count(id),sum(sal),min(sal),max(sal)
+from employee 
+group by dept
+order by count(id) desc;
+
+select dept,count(id),sum(sal),min(sal),max(sal)
+from employee 
+group by dept
+having count(id)>2;
+
+select dept,min(sal)
+from employee 
+group by dept
+having min(sal)>20000
+order by min(sal);
+
+select dept,min(sal)
+from employee 
+group by dept
+having count(id)<=2
+order by min(sal);
+
+select dept,sum(sal) 
+from employee
+group by dept
+having count(id)<=2
+order by sum(sal);
+
+select dept,count(id) from employee 
+group by dept
+order by count(id);
+
+select dept,sum(sal) from employee 
+group by dept
+order by sum(sal);
+
+select dept,sum(sal) from employee 
+group by dept 
+having sum(sal)>100000
+order by sum(sal);
+
+select dept,sum(sal) from employee 
+where dept<>'HR' 
+group by dept
+having sum(sal)>60000
+order by sum(sal);
+
