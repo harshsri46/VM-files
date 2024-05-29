@@ -1,0 +1,96 @@
+create table book
+(
+id number(10)primary key,
+name varchar2(30),
+author varchar2(30),
+deptId number(10)
+);
+
+insert into book values (1,'java','Sumita Das',101);
+insert into book values (2, 'python','Eric matthes',102);
+insert into book values (3 ,'art of living','Norman',103);
+insert into book values (4, 'the alchemist','Ben Johnson',104);
+
+select * from book;
+drop    table book;
+delete all from book;
+create table department
+(
+Id number(10),
+deptName varchar2(30) not null,
+constraints fk1 foreign key (Id)references book(deptId)
+);
+
+select * from employee;
+select * from dept;
+insert into dept values(2,'developer','manish');
+insert into dept values(3,'admin','kumar');
+insert into dept values(4,'finance','gopal');
+insert into dept values(5,'developer','girish');
+update employee set name='finance' where id=3;
+delete from dept where id =5;
+
+update emp7 set deptid=4 where id=101;
+select * from emp7;
+insert into emp7 values(107,'shivam',35,52000,2);
+update emp7 set deptid=2 where id=102;
+
+//inner join
+select * from emp7
+inner join
+dept
+on emp7.deptId=dept.id;
+
+//left outer join
+select * from emp7
+left outer join
+dept
+on emp7.deptId=dept.id
+
+//right outer join
+select * from emp7
+right outer join
+dept
+on emp7.deptId=dept.id
+
+//full outer join
+select * from emp7
+full outer join
+dept
+on emp7.deptId=dept.id
+
+select * from emp7
+cross join
+dept;
+
+select * from emp7;
+
+create table employee8
+(
+id number(10),
+name varchar2(30),
+managerId number(10)
+);
+
+insert into employee8 values(1,'sachin',2);
+insert into employee8 values(2,'amar',5);
+insert into employee8 values(3,'ankit',5);
+insert into employee8 values(4,'rohit',2);
+insert into employee8 values(5,'saurabh',2);
+
+select * from employee8;
+
+select e.name,e.name from employee8 e;
+
+select e.name as empname,e.name as managername
+from employee8 e 
+join 
+employee8 m
+on e.id=m.managerid;
+
+
+select e.id ,e,name,e.salary,d.id as DeptId,d.name as DeptName,d.manager as managername
+from emp7 e
+right outer join
+dept d
+on e.deptId=d.id;
