@@ -1,0 +1,98 @@
+
+select * from employee;
+
+select * from employee where name like 'r%';
+select * from employee where name like '_a%';
+
+select * from employee where name like 't%';
+
+select * from employee where name like '%a_';
+
+select * from employee where name like '%a%';
+
+update employee set name='vinit' where id=3;
+
+select round(100.23456,3) from dual;
+select round(100.23456) from dual;
+
+select id,name,sal as salary,sal/30 as salaryperday ,round(sal/30,2),round(sal/30) from employee;
+
+select trunc(100.275,2) from dual;
+select trunc(100.275) from dual;
+select trunc(100.7394) from dual;
+
+select mod(10,2) from dual;
+select mod(11,2) from dual;
+select mod(14,5) from dual;
+
+select upper('mohit')from dual;
+
+select id,name, upper(name),lower(name), initcap(name),length(name),from employee;
+
+select * from employee where length(name)>5;
+select * from employee where length(name)=5;
+
+select id ,name, concat('welcome  ',name) ,instr(name,'a') from employee;
+
+select * from employee;
+
+select id,name,dept,lpad(dept,8,'*') from employee;
+
+select id,name ,dept,rpad(dept,10,'*') from employee;
+
+select id,name,replace(name,'a','*') from employee;
+
+select sysdate from dual;
+
+select * from dual;
+alter table employee add doj date;
+
+select * from employee;
+
+alter table employee add dob date;
+
+update employee set dob='23-apr-2012',doj='9-feb-2021' where id=1;
+update employee set dob='2-apr-2010',doj='19-feb-2022' where id=2;
+update employee set dob='3-june-2009',doj='4-oct-2023' where id=3;
+update employee set dob='3-aug-1986',doj='17-jan-2020' where id=4;
+update employee set dob='30-mar-1992',doj='12-jul-2019' where id=5;
+update employee set dob='13-nov-1989',doj='14-may-2021' where id=6;
+update employee set dob='28-feb-2000',doj='22-aug-2022' where id=7;
+update employee set dob='25-apr-1998',doj='11-mar-2021' where id=8;
+update employee set dob='18-june-1890',doj='16-apr-2024' where id=9;
+
+select id,name,doj,doj+2,doj+30 from employee;
+
+
+select id,name,doj,doj-2,doj-30 from employee;
+
+select id,name,round((sysdate-dob)/365) as age from employee;
+
+
+select id,name,dob,round(months_between(sysdate,dob)) from employee;
+
+select id,name,dob,round((sysdate-dob)/365)as  age from employee;
+
+select id,name,dob,round((sysdate-dob)/365)as  age from employee
+where  round((sysdate-dob)/365)>35;
+
+select id,name,round(months_between(sysdate,doj))as months from employee;//rounds of doj and current date
+
+select id,name,months_between(sysdate,doj) as months from employee;//months between doj and current date 
+
+select next_day(sysdate,'saturday') from dual;
+
+select next_day('1-may-2024','saturday') from dual;
+
+select last_day('1-may-2024')from dual;
+
+select   id,name,doj,to_char(doj,'mm/yy') from employee;
+
+
+select   id,name,doj,to_char(doj,'dd/mm/yy') from employee;
+
+
+select   id,name,doj,to_char(doj,'mon/yy') from employee;
+
+
+

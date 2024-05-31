@@ -1,0 +1,45 @@
+create sequence empid_sequence
+minvalue 1
+start with 1
+increment by 1;
+
+create table employee11
+(
+id number(10)primary key,
+name varchar2(40),
+age number(10),
+dept varchar2(30)
+);
+
+insert into employee11 values(empid_sequence.nextval,'sachin',30,'hr');
+
+insert into employee11 values(empid_sequence.nextval,'ravi',32,'developer');
+
+select * from employee11;
+
+create sequence prod_sequence
+start with 1000
+increment by 1;
+
+create table product
+(
+id number(10) primary key,
+name varchar2(30),
+quantity number(10),
+details varchar2(40)
+);
+
+insert into product values(prod_sequence.nextval,'kishan',30,'cleaning kit');
+
+insert into product values(prod_sequence.nextval,'ankita',4,'cooking kit');
+update product set name ='mobile', details='electronics' where id=1000;
+
+update product set name ='sofa cover', details='Households' where id=1001;
+select * from product;
+
+
+
+
+
+
+

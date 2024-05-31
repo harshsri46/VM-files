@@ -1,0 +1,15 @@
+select * from employee;
+
+create view hrlist as 
+select * from employee where dept='HR';
+
+select * from hrlist;
+select id,name ,age from  hrlist;
+
+create view hrlist2 as 
+select id,name,dob from employee where dept='HR';
+
+select * from hrlist2;
+
+select name from hrlist2 where id=2;
+
